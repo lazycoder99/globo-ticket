@@ -11,11 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_db", "_db", "{A0A1552A-184
 		_db\schema.sql = _db\schema.sql
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GloboTicket.Web", "GloboTicket.Web\GloboTicket.Web.csproj", "{B7D27BD0-8AE8-40EF-83B7-51ADCE188B34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GloboTicket.Web", "GloboTicket.Web\GloboTicket.Web.csproj", "{B7D27BD0-8AE8-40EF-83B7-51ADCE188B34}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{FC4067ED-C3DC-468C-9A17-F5DCEE652497}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GloboTicket.Domain", "GloboTicket.Domain\GloboTicket.Domain.csproj", "{84818879-A1F3-46AA-8972-EF64102EAD1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GloboTicket.Domain", "GloboTicket.Domain\GloboTicket.Domain.csproj", "{84818879-A1F3-46AA-8972-EF64102EAD1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GloboTicket.Application", "GloboTicket.Application\GloboTicket.Application.csproj", "{5E50E3F5-1E90-4B5C-8F68-7881A9A18F91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{84818879-A1F3-46AA-8972-EF64102EAD1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84818879-A1F3-46AA-8972-EF64102EAD1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84818879-A1F3-46AA-8972-EF64102EAD1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E50E3F5-1E90-4B5C-8F68-7881A9A18F91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E50E3F5-1E90-4B5C-8F68-7881A9A18F91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E50E3F5-1E90-4B5C-8F68-7881A9A18F91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E50E3F5-1E90-4B5C-8F68-7881A9A18F91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{B7D27BD0-8AE8-40EF-83B7-51ADCE188B34} = {A9759D01-99C8-4245-93C8-AA2EEF544CD7}
 		{FC4067ED-C3DC-468C-9A17-F5DCEE652497} = {A9759D01-99C8-4245-93C8-AA2EEF544CD7}
 		{84818879-A1F3-46AA-8972-EF64102EAD1B} = {FC4067ED-C3DC-468C-9A17-F5DCEE652497}
+		{5E50E3F5-1E90-4B5C-8F68-7881A9A18F91} = {FC4067ED-C3DC-468C-9A17-F5DCEE652497}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1A3A3F2B-22AC-4C2D-93CD-C4D7636CED8E}
