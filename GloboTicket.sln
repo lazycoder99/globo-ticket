@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A9759D01-99C8-4245-93C8-AA2EEF544CD7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_db", "_db", "{A0A1552A-184D-4521-A154-2571C6142CE1}"
+	ProjectSection(SolutionItems) = preProject
+		_db\data.sql = _db\data.sql
+		_db\schema.sql = _db\schema.sql
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GloboTicket.Web", "GloboTicket.Web\GloboTicket.Web.csproj", "{B7D27BD0-8AE8-40EF-83B7-51ADCE188B34}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{FC4067ED-C3DC-468C-9A17-F5DCEE652497}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GloboTicket.Domain", "GloboTicket.Domain\GloboTicket.Domain.csproj", "{84818879-A1F3-46AA-8972-EF64102EAD1B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7D27BD0-8AE8-40EF-83B7-51ADCE188B34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7D27BD0-8AE8-40EF-83B7-51ADCE188B34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7D27BD0-8AE8-40EF-83B7-51ADCE188B34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7D27BD0-8AE8-40EF-83B7-51ADCE188B34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84818879-A1F3-46AA-8972-EF64102EAD1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84818879-A1F3-46AA-8972-EF64102EAD1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84818879-A1F3-46AA-8972-EF64102EAD1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84818879-A1F3-46AA-8972-EF64102EAD1B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B7D27BD0-8AE8-40EF-83B7-51ADCE188B34} = {A9759D01-99C8-4245-93C8-AA2EEF544CD7}
+		{FC4067ED-C3DC-468C-9A17-F5DCEE652497} = {A9759D01-99C8-4245-93C8-AA2EEF544CD7}
+		{84818879-A1F3-46AA-8972-EF64102EAD1B} = {FC4067ED-C3DC-468C-9A17-F5DCEE652497}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A3A3F2B-22AC-4C2D-93CD-C4D7636CED8E}
+	EndGlobalSection
+EndGlobal
