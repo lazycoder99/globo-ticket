@@ -4,7 +4,7 @@ using FluentValidation.Results;
 using Microsoft.Extensions.Logging;
 using Serilog.Context;
 
-namespace GatewaySvc.Application.Common
+namespace GloboTicket.Application.Common.Extensions
 {
     public static class LoggerExtensions
     {

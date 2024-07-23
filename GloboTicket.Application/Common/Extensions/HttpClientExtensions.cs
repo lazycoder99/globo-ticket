@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using System.Text;
+﻿using System.Text;
+using Newtonsoft.Json;
 
-namespace GatewaySvc.Application.Common
+namespace GloboTicket.Application.Common.Extensions
 {
     public static class HttpClientExtensions
     {

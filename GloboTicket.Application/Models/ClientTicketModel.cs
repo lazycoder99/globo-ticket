@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace GloboTicket.Application.Models
 {
-    internal class Class1
+    public class ClientTicketModel
     {
+        // add model attributes related to business logic and data persistence
     }
 }

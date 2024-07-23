@@ -3,7 +3,7 @@ using System.Reflection;
 using GatewaySvc.Application.Common.Settings;
 using GloboTicket.Application.Common.Settings;
 
-namespace GatewaySvc.Application.Common
+namespace GloboTicket.Application.Common.Extensions
 {
     public static class EnumExtensions
     {

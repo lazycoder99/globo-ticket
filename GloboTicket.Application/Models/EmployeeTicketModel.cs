@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GloboTicket.Application.Services
+namespace GloboTicket.Application.Models
 {
-    internal class Class1
+    public class EmployeeTicketModel
     {
+
     }
 }
+
