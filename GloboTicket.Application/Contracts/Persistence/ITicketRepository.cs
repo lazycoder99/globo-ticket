@@ -5,7 +5,7 @@ namespace GloboTicket.Application.Contracts.Persistence
 {
     public interface ITicketRepository
     {
-        public Ticket Get(int ticketId);
+        public Task<Ticket> Get(int ticketId);
         public Task<ICollection> GetAll();
 
         public Task<bool> Add(Ticket ticket);

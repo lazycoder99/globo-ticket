@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using GloboTicket.Application.Contracts.Persistence;
+using GloboTicket.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace GloboTicket.Infrastructure.Platform
 {
@@ -9,31 +13,13 @@ namespace GloboTicket.Infrastructure.Platform
         {
             // register all services
 
-            services.AddDbContext<ApiGatewayContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("APIGatewayService")));
+            services.AddDbContext<GloboTicketContext>(options =>
+                options.UseSqlServer(configuration.GetConnectionString("GloboTicket")));
 
-            services.AddDbContext<ApiUrlContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("APIGatewayUrl")));
+            //services.AddSingleton<AppConfigService>();
 
-            services.AddDbContext<PerceptContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("Percept")));
-
-            services.AddAutoMapper(typeof(MappingProfile).Assembly);
-            services.AddSingleton<AppConfigService>();
-
-            services.AddScoped<IAccountRepository, AccountRepository>();
-            services.AddScoped<IConsumerRepository, ConsumerRepository>();
-            services.AddScoped<IInstrumentRepository, InstrumentRepository>();
-            services.AddScoped<IPaymentRepository, PaymentRepository>();
-            services.AddScoped<IVisaCardService, VisaCardService>();
-            services.AddScoped<IMessagingRepository, MessagingRepository>();
-            services.AddScoped<IPerceptRepository, PerceptRepository>();
-
-            services.AddScoped<IVisaDirectProvider, VisaDirectProvider>();
-            //services.AddScoped<IPlugProvider, PlugProvider>();
-            services.AddScoped<IACHProvider, ACHProvider>();
-            services.AddScoped<IUrlRepository, UrlRepository>();
-            services.AddScoped<IBGServiceRepository, BGServiceRepository>();
+            services.AddScoped<IClientRepository, ClientRepository>();
+            services.AddScoped<ITicketRepository, TicketRepository>();
 
             return services;
         }

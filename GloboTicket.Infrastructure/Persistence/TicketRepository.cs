@@ -11,7 +11,7 @@ namespace GloboTicket.Infrastructure.Persistence
 {
     internal class TicketRepository : ITicketRepository
     {
-        public Ticket Get(int ticketId)
+        public Task<Ticket> Get(int ticketId)
         {
             throw new NotImplementedException();
         }

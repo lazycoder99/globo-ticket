@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace GloboTicket.Application.Common.Helpers
 {
     // helper class for common utilities
-    public static class Util
+    public static class Utils
     {
         public static string GetPlainMobileNumber(string? mobileNumber)
         {

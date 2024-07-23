@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Reflection;
-using GatewaySvc.Application.Common.Settings;
 using GloboTicket.Application.Common.Settings;
 
 namespace GloboTicket.Application.Common.Extensions
@@ -9,9 +8,9 @@ namespace GloboTicket.Application.Common.Extensions
     {
         public static string GetMessage(this Error error)
         {
-            var dbValue = ConfigProvider.Find(error);
-            if (!string.IsNullOrEmpty(dbValue))
-                return dbValue;
+            //var dbValue = ConfigProvider.Find(error);
+            //if (!string.IsNullOrEmpty(dbValue))
+            //    return dbValue;
 
             var defaultVal = error.GetDescription();
             if (!string.IsNullOrEmpty(defaultVal))
@@ -22,9 +21,9 @@ namespace GloboTicket.Application.Common.Extensions
 
         public static string GetMessage(this Success success)
         {
-            var dbValue = ConfigProvider.Find(success);
-            if (!string.IsNullOrEmpty(dbValue))
-                return dbValue;
+            //var dbValue = ConfigProvider.Find(success);
+            //if (!string.IsNullOrEmpty(dbValue))
+            //    return dbValue;
 
             var defaultVal = success.GetDescription();
             if (!string.IsNullOrEmpty(defaultVal))
