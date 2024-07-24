@@ -4,10 +4,11 @@ using GloboTicket.Application.Models;
 using GloboTicket.Application.Models.Http;
 using GloboTicket.Domain.Entities;
 using GloboTicket.Web.Common;
+using GloboTicket.Web.Models;
+using GloboTicket.Web.Models.Request;
 using GloboTicket.Web.Models.Response;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Payactiv.GatewaySvc.API.Common;
 
 namespace GloboTicket.Web.Controllers
 {
@@ -34,11 +35,12 @@ namespace GloboTicket.Web.Controllers
 
         [HttpPost("Add")]
         [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> Add([FromBody] TicketModel model)
+        public async Task<IActionResult> Add([FromBody] AddTicketRequest request)
         {
-            var result = await ticketService.Update(model);
+            var model = mapper.Map<AddTicketRequest, TicketModel>(request);
+            var result = await ticketService.Add(model);
 
-            var response = mapper.MapToApiResponse<dynamic, bool>(result);
+            var response = mapper.MapToApiResponse<dynamic, int>(result);
             response.TraceId = HttpContext.TraceIdentifier;
 
             if (!result.Success)

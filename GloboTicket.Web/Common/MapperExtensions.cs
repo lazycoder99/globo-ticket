@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GloboTicket.Application.Common.Settings;
 using GloboTicket.Application.Models.Http;
+using GloboTicket.Web.Models;
 
 namespace GloboTicket.Web.Common
 {

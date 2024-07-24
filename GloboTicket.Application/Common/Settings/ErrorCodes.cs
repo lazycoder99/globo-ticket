@@ -33,8 +33,8 @@ namespace GloboTicket.Application.Common.Settings
         [Description("Validation failed in this request.")]
         ValidationFailed = 10015,
 
-        [Description("Validation failed for : {0}")]
-        ValidationFailedFor = 10016,
+        [Description("{0} should not be null.")]
+        ArgumentNull = 10016,
 
         #endregion
 

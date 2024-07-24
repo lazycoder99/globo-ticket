@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using GloboTicket.Application.Contracts.Persistence;
 using GloboTicket.Domain.Entities;
+using GloboTicket.Infrastructure.Platform;
 
 namespace GloboTicket.Infrastructure.Persistence
 {
-    internal class TicketRepository : ITicketRepository
+    internal class TicketRepository (GloboTicketContext dbo) : ITicketRepository
     {
         public Task<Ticket> Get(int ticketId)
         {
@@ -21,9 +22,11 @@ namespace GloboTicket.Infrastructure.Persistence
             throw new NotImplementedException();
         }
 
-        public Task<bool> Add(Ticket ticket)
+        public async Task<bool> Add(Ticket ticket)
         {
-            throw new NotImplementedException();
+            dbo.Tickets.Add(ticket);
+            var r = await dbo.SaveChangesAsync();
+            return r > 0;
         }
 
         public Task<bool> Update(Ticket ticket)

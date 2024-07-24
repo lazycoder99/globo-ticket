@@ -1,15 +1,8 @@
 ﻿using GloboTicket.Application.Common.Extensions;
+using GloboTicket.Application.Models.Http;
 
-namespace GloboTicket.Application.Models.Http
+namespace GloboTicket.Web.Models
 {
-    public record ErrorDetail
-    {
-        public string errorCode { get; set; } = string.Empty;
-        public string errorMessage { get; set; } = string.Empty;
-        public string propertyName { get; set; } = string.Empty;
-        public string attemptedValue { get; set; } = string.Empty;
-    }
-
     public class ApiResponse<TDestination>
     {
         public bool Success { get; set; }

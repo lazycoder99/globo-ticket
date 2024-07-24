@@ -13,22 +13,41 @@ namespace GloboTicket.Infrastructure.Platform
 {
     public class GloboTicketContext(DbContextOptions<GloboTicketContext> options) : DbContext(options)
     {
-        public DbSet<Client> Clients { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Ticket>(entity =>
+            {
+                entity.HasKey(e => e.Id); // Setting the primary key
+                entity.Property(e => e.Id).UseIdentityColumn(); // For SQL Server
+
+                // For other database providers, you may use:
+                // .ValueGeneratedOnAdd();
+            });
+        }
+
+        #region Override Methods ********************************************************************
 
         public override int SaveChanges()
         {
-            PerformEntityOperations();
+            DoBeforeUpsert();
             return base.SaveChanges();
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
-            PerformEntityOperations();
+            DoBeforeUpsert();
             return base.SaveChangesAsync(cancellationToken);
         }
 
-        private void PerformEntityOperations()
+        #endregion
+
+        #region Private Methods *********************************************************************
+
+        private void DoBeforeUpsert()
         {
             try
             {
@@ -49,5 +68,7 @@ namespace GloboTicket.Infrastructure.Platform
                 // ignored
             }
         }
+        
+        #endregion
     }
 }
