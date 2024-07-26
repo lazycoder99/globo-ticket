@@ -4,6 +4,7 @@ using GloboTicket.Application.Models;
 using GloboTicket.Application.Models.Http;
 using GloboTicket.Domain.Entities;
 using GloboTicket.Web.Common;
+using GloboTicket.Web.Middleware;
 using GloboTicket.Web.Models;
 using GloboTicket.Web.Models.Request;
 using GloboTicket.Web.Models.Response;
@@ -16,13 +17,30 @@ namespace GloboTicket.Web.Controllers
     [ApiController]
     public class TicketController(IMapper mapper, ITicketService ticketService) : ControllerBase
     {
-        [HttpGet("Get")]
+        [HttpGet("Get"), TypeFilter(typeof(ValidationAttribute))]
         [ProducesResponseType(typeof(ApiResponse<TicketDataResponse>), StatusCodes.Status200OK)]
         public async Task<IActionResult> Get([FromQuery] int ticketId)
         {
             var result = await ticketService.Get(ticketId);
 
-            var response = mapper.MapToApiResponse<TicketModel, TicketDataResponse>(result);
+            var response = mapper.MapToApiResponse<TicketDataResponse>(result);
+            response.TraceId = HttpContext.TraceIdentifier;
+
+            if (!result.Success)
+            {
+                return BadRequest(response);
+            }
+
+            return Ok(response);
+        }
+
+        [HttpGet("GetAll"), TypeFilter(typeof(ValidationAttribute))]
+        [ProducesResponseType(typeof(ApiResponse<List<TicketDataResponse>>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAll()
+        {
+            var result = await ticketService.GetAll();
+
+            var response = mapper.MapToApiResponse<List<TicketDataResponse>>(result);
             response.TraceId = HttpContext.TraceIdentifier;
 
             if (!result.Success)
@@ -40,7 +58,7 @@ namespace GloboTicket.Web.Controllers
             var model = mapper.Map<AddTicketRequest, TicketModel>(request);
             var result = await ticketService.Add(model);
 
-            var response = mapper.MapToApiResponse<dynamic, int>(result);
+            var response = mapper.MapToApiResponse<int>(result);
             response.TraceId = HttpContext.TraceIdentifier;
 
             if (!result.Success)

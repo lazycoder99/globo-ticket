@@ -19,12 +19,16 @@ namespace GloboTicket.Application.Features.Tickets
         public async Task<ResultSet> Get(int ticketId)
         {
             var data = await ticketRepository.Get(ticketId);
+            if (data == null)
+                return new ResultSet(Error.RecordNotFound);
+
             return new ResultSet(data, Success.Success);
         }
 
-        Task<ResultSet> ITicketService.GetAll()
+        public async Task<ResultSet> GetAll()
         {
-            throw new NotImplementedException();
+            var data = await ticketRepository.GetAll();
+            return new ResultSet(data, Success.Success);
         }
 
         public async Task<ResultSet> Add(TicketModel ticket)

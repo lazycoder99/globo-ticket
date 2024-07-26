@@ -13,11 +13,11 @@ namespace GloboTicket.Infrastructure.Platform
         {
             // register all services
 
-            services.AddDbContext<GloboTicketContext>(options =>
-                options.UseInMemoryDatabase("GloboTicket"));
-
             //services.AddDbContext<GloboTicketContext>(options =>
-            //    options.UseSqlServer(configuration.GetConnectionString("GloboTicket")));
+            //    options.UseInMemoryDatabase("GloboTicket"));
+
+            services.AddDbContext<GloboTicketContext>(options =>
+                options.UseSqlServer(configuration.GetConnectionString("GloboTicket")));
 
             services.AddScoped<ITicketRepository, TicketRepository>();
 

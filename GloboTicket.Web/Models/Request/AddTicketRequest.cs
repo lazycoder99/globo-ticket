@@ -5,6 +5,6 @@
     {
         public string Title { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-        public int TicketFor { get; set; }
+        public int ClientId { get; set; }
     }
 }

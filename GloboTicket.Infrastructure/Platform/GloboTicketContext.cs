@@ -14,6 +14,7 @@ namespace GloboTicket.Infrastructure.Platform
     public class GloboTicketContext(DbContextOptions<GloboTicketContext> options) : DbContext(options)
     {
         public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<Client> Clients { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
