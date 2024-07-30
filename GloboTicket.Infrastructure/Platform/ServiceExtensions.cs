@@ -1,4 +1,5 @@
-﻿using GloboTicket.Application.Contracts.Persistence;
+﻿using System.Diagnostics.CodeAnalysis;
+using GloboTicket.Application.Contracts.Persistence;
 using GloboTicket.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -13,14 +14,16 @@ namespace GloboTicket.Infrastructure.Platform
         {
             // register all services
 
+            var connectionString = configuration.GetConnectionString("GloboTicket");
+
             //services.AddDbContext<GloboTicketContext>(options =>
             //    options.UseInMemoryDatabase("GloboTicket"));
 
-            services.AddDbContext<GloboTicketContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("GloboTicket")));
+            services.AddDbContext<GloboTicketContext>(options => options.UseSqlServer(connectionString));
+            services.AddDapperContext<DapperContext>(options => options.UseSqlServer(connectionString));
 
             services.AddScoped<ITicketRepository, TicketRepository>();
-
+              
             return services;
         }
     }

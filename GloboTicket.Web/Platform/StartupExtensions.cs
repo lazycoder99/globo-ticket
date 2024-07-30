@@ -25,7 +25,6 @@ namespace GloboTicket.Web.Platform
 
             builder.Services.AddInfrastructureServices(builder.Configuration);
             builder.Services.AddApplicationServices();
-            builder.Services.AddHttpClient();
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();

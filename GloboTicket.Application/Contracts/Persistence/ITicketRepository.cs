@@ -8,6 +8,7 @@ namespace GloboTicket.Application.Contracts.Persistence
     {
         public Task<Ticket?> Get(int ticketId);
         public Task<List<TicketModel>> GetAll();
+        public Task<List<TicketModel>> GetAllWithDapper();
 
         public Task<bool> Add(Ticket ticket);
         public Task<bool> Update(Ticket ticket);

@@ -28,6 +28,8 @@ namespace GloboTicket.Application.Features.Tickets
         public async Task<ResultSet> GetAll()
         {
             var data = await ticketRepository.GetAll();
+            var dapperData = await ticketRepository.GetAllWithDapper();
+
             return new ResultSet(data, Success.Success);
         }
 

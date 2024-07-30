@@ -8,10 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using GloboTicket.Domain.Common;
 using GloboTicket.Domain.Entities;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
+using System.Data;
 
 namespace GloboTicket.Infrastructure.Platform
 {
-    public class GloboTicketContext(DbContextOptions<GloboTicketContext> options) : DbContext(options)
+    public class GloboTicketContext(DbContextOptions<GloboTicketContext> options, IConfiguration configuration) : DbContext(options)
     {
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<Client> Clients { get; set; }
@@ -29,47 +32,5 @@ namespace GloboTicket.Infrastructure.Platform
                 // .ValueGeneratedOnAdd();
             });
         }
-
-        #region Override Methods ********************************************************************
-
-        public override int SaveChanges()
-        {
-            DoBeforeUpsert();
-            return base.SaveChanges();
-        }
-
-        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
-        {
-            DoBeforeUpsert();
-            return base.SaveChangesAsync(cancellationToken);
-        }
-
-        #endregion
-
-        #region Private Methods *********************************************************************
-
-        private void DoBeforeUpsert()
-        {
-            try
-            {
-                foreach (var entry in ChangeTracker.Entries())
-                {
-                    switch (entry.State)
-                    {
-                        case EntityState.Added:
-                            break;
-                        case EntityState.Modified:
-                            ((AuditableEntity)entry.Entity).UpdatedAt = DateTime.UtcNow;
-                            break;
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                // ignored
-            }
-        }
-        
-        #endregion
     }
 }
