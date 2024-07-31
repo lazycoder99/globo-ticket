@@ -32,5 +32,47 @@ namespace GloboTicket.Infrastructure.Platform
                 // .ValueGeneratedOnAdd();
             });
         }
+
+        #region Override Methods ********************************************************************
+
+        public override int SaveChanges()
+        {
+            DoBeforeUpsert();
+            return base.SaveChanges();
+        }
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+        {
+            DoBeforeUpsert();
+            return base.SaveChangesAsync(cancellationToken);
+        }
+
+        #endregion
+
+        #region Private Methods *********************************************************************
+
+        private void DoBeforeUpsert()
+        {
+            try
+            {
+                foreach (var entry in ChangeTracker.Entries())
+                {
+                    switch (entry.State)
+                    {
+                        case EntityState.Added:
+                            break;
+                        case EntityState.Modified:
+                            ((AuditableEntity)entry.Entity).UpdatedAt = DateTime.UtcNow;
+                            break;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+        }
+
+        #endregion
     }
 }
